@@ -51,8 +51,8 @@ function charCounter() {
     characters.innerText = charactersCount;      
 }
 
-function numberCounter(text) {
-  var text = content.value.split(' ');
+function numberCounter() {
+  var text = content.value.split('');
   var numberCount = 0;
   for (var i = 0; i < text.length; i++) {
     if (!text[i] == ' ' && parseInt(text[i])) {
