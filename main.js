@@ -1,16 +1,19 @@
 var worlds = document.getElementById('worlds');
 var characters = document.getElementById('characters');
 var num = document.getElementById('numbers');
+var special = document.getElementById('special');
 var content = document.getElementById('content');
 
 var globalWordCounter = 0;
 var globalCharCounter = 0;
 var globalNumberCounter = 0;
+var globalSpecialCounter = 0;
 
 content.addEventListener('keyup', function(e) {
   wordCounter(e.target.value);
   charCounter(e.target.value);
   numberCounter(e.target.value)
+  specialCounter(e.target.value)
 });
 
 function isWord(str) {
@@ -39,7 +42,7 @@ function wordCounter(text) {
   worlds.innerText = wordCount;
 }
 
-function charCounter() {
+function charCounter(text) {
     var texte = content.value.split('');
     var charactersCount = 0;
     for (var i = 0; i < texte.length; i++) {
@@ -51,7 +54,7 @@ function charCounter() {
     characters.innerText = charactersCount;      
 }
 
-function numberCounter() {
+function numberCounter(text) {
   var text = content.value.split('');
   var numberCount = 0;
   for (var i = 0; i < text.length; i++) {
@@ -61,4 +64,16 @@ function numberCounter() {
   }
   globalNumberCounter = numberCount;
   num.innerText = numberCount;
+}
+
+function specialCounter(text) {
+  var text = content.value.split('');
+  var specialCount = 0;
+  for (var i = 0; i < text.length; i++) {
+    if (!text[i] == ' ' && !parseInt(text[i]) && !text[i].match(/([0-9A-Za-z]+)/)) {
+      specialCount++;
+    }
+  }
+  globalSpecialCounter = specialCount;
+  special.innerText = specialCount;  
 }
