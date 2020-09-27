@@ -1,12 +1,16 @@
 var worlds = document.getElementById('worlds');
 var characters = document.getElementById('characters');
+var num = document.getElementById('numbers');
 var content = document.getElementById('content');
+
 var globalWordCounter = 0;
 var globalCharCounter = 0;
+var globalNumberCounter = 0;
 
 content.addEventListener('keyup', function(e) {
   wordCounter(e.target.value);
   charCounter(e.target.value);
+  numberCounter(e.target.value)
 });
 
 function isWord(str) {
@@ -45,4 +49,16 @@ function charCounter() {
     }
     globalCharCounter = charactersCount;
     characters.innerText = charactersCount;      
+}
+
+function numberCounter(text) {
+  var text = content.value.split(' ');
+  var numberCount = 0;
+  for (var i = 0; i < text.length; i++) {
+    if (!text[i] == ' ' && parseInt(text[i])) {
+      numberCount++;
+    }
+  }
+  globalNumberCounter = numberCount;
+  num.innerText = numberCount;
 }
